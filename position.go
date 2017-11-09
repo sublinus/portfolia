@@ -23,21 +23,8 @@ func (p Position) currentPrice() (float64, time.Time, error) {
 		return 0, time.Time{}, err
 	}
 	var stock struct {
-		Status           string  `json:"Status`
-		Name             string  `json:"Name`
-		Symbol           string  `json:"Symbol"`
-		Price            float64 `json:"LastPrice"`
-		Change           float64 `json:"Change"`
-		ChangePercent    float64 `json:"ChangePercent"`
-		Time             string  `json:"Timestamp"`
-		MsDate           float64 `json:"MSDate"`
-		MarketCap        float64 `json:"MarketCap`
-		Volume           int     `json:"Volume"`
-		ChangeYTD        int     `json:"ChangeYTD`
-		ChangePercentYTD int     `json:"ChangePercentYTD`
-		High             float64 `json:"High"`
-		Low              float64 `json:"Low"`
-		Open             float64 `json:"Open"`
+		Price float64 `json:"LastPrice"`
+		Time  string  `json:"Timestamp"`
 	}
 	json.NewDecoder(res.Body).Decode(&stock)
 	if stock.Price != 0 && stock.Time != "" {
