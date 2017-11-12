@@ -17,5 +17,5 @@ func main() {
 	if err != nil {
 		fmt.Printf("Didn't work because: %s", err)
 	}
-	fmt.Printf("Current Value of Portfolio: %.4f\n", val)
+	fmt.Printf("Current Value of Portfolio: %.2f\n", val)
 }
