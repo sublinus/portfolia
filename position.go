@@ -8,7 +8,7 @@ import (
 )
 
 type Position struct {
-	numOfShares     int
+	numOfShares     float64
 	timeOfPurchase  time.Time
 	priceOfPurchase float64
 	symbol          string
@@ -54,5 +54,5 @@ func (p Position) revenue() (float64, float64, error) {
 	if err != nil {
 		return 0, 0, err
 	}
-	return revenue * float64(p.numOfShares), revenuePercent, nil
+	return revenue * p.numOfShares, revenuePercent * 100, nil
 }
