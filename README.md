@@ -1,2 +1,2 @@
 # Portfolia
-Project in golang for worikng on stock portfolios with real market values.
+Project in go for working on stock portfolios with real market values.
