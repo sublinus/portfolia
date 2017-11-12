@@ -8,15 +8,15 @@ import (
 )
 
 type Position struct {
-	numOfShares     float64
-	timeOfPurchase  time.Time
-	priceOfPurchase float64
-	symbol          string
-	name            string
+	NumOfShares     float64
+	TimeOfPurchase  time.Time
+	PriceOfPurchase float64
+	Symbol          string
+	Name            string
 }
 
 func (p Position) currentPrice() (float64, time.Time, error) {
-	url := "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=" + p.symbol
+	url := "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=" + p.Symbol
 	res, err := http.Get(url)
 	defer res.Body.Close()
 	if err != nil {
@@ -43,8 +43,8 @@ func (p Position) revenuePerShare() (float64, float64, error) {
 	if err != nil {
 		return 0, 0, err
 	}
-	revenue := price - p.priceOfPurchase
-	revenuePercentage := revenue / p.priceOfPurchase
+	revenue := price - p.PriceOfPurchase
+	revenuePercentage := revenue / p.PriceOfPurchase
 
 	return revenue, revenuePercentage, nil
 }
@@ -54,5 +54,5 @@ func (p Position) revenue() (float64, float64, error) {
 	if err != nil {
 		return 0, 0, err
 	}
-	return revenue * p.numOfShares, revenuePercent * 100, nil
+	return revenue * p.NumOfShares, revenuePercent * 100, nil
 }
